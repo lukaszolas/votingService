@@ -18,7 +18,7 @@ class VotingCard {
 
     private Long id;
     private Long electionId;
-    private List<List> electionList;
+    private List<Integer> electionList;
 
     VotingDto toDto(){
         return new VotingDto(id, electionId, electionList);

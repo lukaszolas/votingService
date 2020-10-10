@@ -29,8 +29,9 @@ class VotingServicesTest {
     void shouldConvertDtoToEntity(){
 
         //given
-        VotingDto votingDto = new VotingDto(1L, 1L, new ArrayList<>());
-        ResponseEntity responseEntity = new ResponseEntity<>(votingDto ,HttpStatus.OK);
+        VotingCardDto votingCardDto = new VotingCardDto();
+        votingCardDto.setVotingCard(new VotingDto(1L, 1L, new ArrayList<>()));
+        ResponseEntity responseEntity = new ResponseEntity<>(votingCardDto ,HttpStatus.OK);
 
         when(restTemplate.getForEntity(anyString(),any())).thenReturn(responseEntity);
 

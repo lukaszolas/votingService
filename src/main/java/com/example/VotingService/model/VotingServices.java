@@ -10,12 +10,15 @@ import org.springframework.web.client.RestTemplate;
 @AllArgsConstructor
 class VotingServices {
 
+    private static final String URL = "http://10.10.0.36:8080/voting/";
     private final RestTemplate restTemplate;
 
     VotingCard getVotingCardList(Long id){
-        ResponseEntity<VotingDto> response = restTemplate.getForEntity("http://localhost:8082/votingCardList/" + id, VotingDto.class);
-        VotingDto body = response.getBody();
+        ResponseEntity<VotingCardDto> response = restTemplate.getForEntity(URL + id, VotingCardDto.class);
+        VotingDto body = response.getBody().getVotingCard();
         VotingCard votingCard = new VotingCard(body.getId(), body.getElectionId(), body.getElectionList());
         return votingCard;
     }
+
+
 }

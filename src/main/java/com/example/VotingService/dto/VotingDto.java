@@ -1,5 +1,6 @@
 package com.example.VotingService.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import java.util.List;
@@ -13,6 +14,10 @@ import java.util.List;
 public class VotingDto {
 
     private Long id;
+
+    @JsonProperty("idElection")
     private Long electionId;
-    private List<List> electionList;
+
+    @JsonProperty("electionList")
+    private List<Integer> electionList;
 }
