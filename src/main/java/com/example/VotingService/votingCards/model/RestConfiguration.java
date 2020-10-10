@@ -1,4 +1,4 @@
-package com.example.VotingService.model;
+package com.example.VotingService.votingCards.model;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

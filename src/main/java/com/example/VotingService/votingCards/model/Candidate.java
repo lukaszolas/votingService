@@ -1,6 +1,6 @@
-package com.example.VotingService.model;
+package com.example.VotingService.votingCards.model;
 
-import com.example.VotingService.dto.CandidateDto;
+import com.example.VotingService.votingCards.dto.CandidateDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

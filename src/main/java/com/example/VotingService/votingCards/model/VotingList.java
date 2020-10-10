@@ -1,8 +1,7 @@
-package com.example.VotingService.model;
+package com.example.VotingService.votingCards.model;
 
-import com.example.VotingService.dto.VotingListDto;
-import com.example.VotingService.model.Candidate;
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.example.VotingService.votingCards.dto.VotingListDto;
+import com.example.VotingService.votingCards.model.Candidate;
 import lombok.*;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.VotingService.dto;
+package com.example.VotingService.votingCards.dto;
 
 import lombok.Value;
 

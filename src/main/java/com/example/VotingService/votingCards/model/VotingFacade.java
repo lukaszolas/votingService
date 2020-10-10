@@ -1,6 +1,6 @@
-package com.example.VotingService.model;
+package com.example.VotingService.votingCards.model;
 
-import com.example.VotingService.dto.VotingCardDto;
+import com.example.VotingService.votingCards.dto.VotingCardDto;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 

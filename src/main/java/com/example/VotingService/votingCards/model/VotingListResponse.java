@@ -1,4 +1,4 @@
-package com.example.VotingService.model;
+package com.example.VotingService.votingCards.model;
 
 
 import lombok.Getter;
