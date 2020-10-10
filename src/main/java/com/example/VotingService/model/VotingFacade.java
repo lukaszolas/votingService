@@ -8,5 +8,10 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class VotingFacade {
 
+    private final VotingServices resultsCardList;
+
+    public VotingCard votingCardList(Long id){
+        return resultsCardList.getVotingCardList(id);
+    }
 
 }

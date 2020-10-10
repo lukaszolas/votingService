@@ -1,10 +1,15 @@
 package com.example.VotingService.dto;
 
-import lombok.Value;
+import lombok.*;
 
 import java.util.List;
 
-@Value
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+
 public class VotingDto {
 
     private Long id;
