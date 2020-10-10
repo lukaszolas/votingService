@@ -1,6 +1,7 @@
 package com.example.VotingService.model;
 
-import com.example.VotingService.dto.VotingDto;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
@@ -26,21 +27,51 @@ class VotingServicesTest {
     RestTemplate restTemplate;
 
     @Test
-    void shouldConvertDtoToEntity(){
+    void shouldConvertDtoToEntity() throws JsonProcessingException {
 
         //given
-        VotingCardDto votingCardDto = new VotingCardDto();
-        votingCardDto.setVotingCard(new VotingDto(1L, 1L, new ArrayList<>()));
-        ResponseEntity responseEntity = new ResponseEntity<>(votingCardDto ,HttpStatus.OK);
+        String json = getJson();
+        ObjectMapper objectMapper = new ObjectMapper();
+        VotingListResponse votingListResponse = objectMapper.readValue(json, VotingListResponse.class);
+        ResponseEntity responseEntity = new ResponseEntity<>(votingListResponse,HttpStatus.OK);
 
         when(restTemplate.getForEntity(anyString(),any())).thenReturn(responseEntity);
 
         //when
-        VotingCard votingCardList = votingServices.getVotingCardList(1L);
+        List<VotingList> votingCardList = votingServices.getVotingCardList(1L);
 
         //then
-        assertEquals(1L, votingCardList.getId());
-        assertEquals(1L, votingCardList.getElectionId());
-        assertTrue(votingCardList.getElectionList().isEmpty());
+        VotingList votingCard = votingCardList.get(0);
+
+        assertEquals(4, votingCard.getNumberOfParty());
+        assertEquals(3, votingCard.getCandidates().size());
+
+    }
+
+    private String getJson() {
+        return "{\n" +
+                "  \"votingCard\": [\n" +
+                "    {\n" +
+                "      \"numberOfParty\": 4,\n" +
+                "      \"candidates\": [\n" +
+                "        {\n" +
+                "          \"pesel\": \"1234658\",\n" +
+                "          \"firstName\": \"Jan\",\n" +
+                "          \"lastName\": \"Kowalski\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"pesel\": \"1234658\",\n" +
+                "          \"firstName\": \"Jan\",\n" +
+                "          \"lastName\": \"Kowalski\"\n" +
+                "        },\n" +
+                "        {\n" +
+                "          \"pesel\": \"1234658\",\n" +
+                "          \"firstName\": \"Jan\",\n" +
+                "          \"lastName\": \"Kowalski\"\n" +
+                "        }\n" +
+                "      ]\n" +
+                "    }\n" +
+                "    ]\n" +
+                "}";
     }
 }

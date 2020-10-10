@@ -1,15 +1,16 @@
 package com.example.VotingService.model;
 
 
-import com.example.VotingService.dto.VotingDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @Getter
 @Setter
-public class VotingCardDto {
+class VotingListResponse {
 
-    private VotingDto votingCard;
+    private List<VotingList> votingCard;
 }

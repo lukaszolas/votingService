@@ -1,13 +1,13 @@
 package com.example.VotingService.model;
 
-import com.example.VotingService.dto.VotingDto;
+import com.example.VotingService.dto.VotingCardDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @NoArgsConstructor
@@ -16,11 +16,9 @@ import java.util.List;
 @Setter
 class VotingCard {
 
-    private Long id;
-    private Long electionId;
-    private List<Integer> electionList;
+    private List<VotingList> votingCard;
 
-    VotingDto toDto(){
-        return new VotingDto(id, electionId, electionList);
+    VotingCardDto toDto(){
+        return new VotingCardDto(votingCard.stream().map(x -> x.toDto()).collect(Collectors.toList()));
     }
 }
